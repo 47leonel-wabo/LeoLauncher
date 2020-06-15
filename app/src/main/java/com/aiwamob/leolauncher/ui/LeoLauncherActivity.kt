@@ -38,7 +38,7 @@ class LeoLauncherActivity : AppCompatActivity() {
                 b.loadLabel(packageManager).toString()
             )
         })
-
+        binding.appRecyclerView.adapter = LeoActivityAdapter(activities)
         Log.i(TAG, "Found ${activities.size} activities")
     }
 }
