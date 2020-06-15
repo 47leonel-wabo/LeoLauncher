@@ -43,14 +43,26 @@ class LeoLauncherActivity : AppCompatActivity() {
     }
 }
 
-class LeoActivityViewHolder(item: View) : RecyclerView.ViewHolder(item) {
+class LeoActivityViewHolder(item: View) : RecyclerView.ViewHolder(item), View.OnClickListener {
     private val nameTxt = item as TextView
     private lateinit var resolveInfo: ResolveInfo
+    init {
+        nameTxt.setOnClickListener(this)
+    }
     fun bindActivity(rInfo: ResolveInfo) {
         resolveInfo = rInfo
         val pckMgr = itemView.context.packageManager
         val appName = rInfo.loadLabel(pckMgr).toString()
         nameTxt.text = appName
+    }
+
+    override fun onClick(v: View?) {
+        val activityInfo = resolveInfo.activityInfo
+        val intent = Intent(Intent.ACTION_MAIN).apply {
+            setClassName(activityInfo.applicationInfo.packageName, activityInfo.name)
+        }
+        val context = v?.context
+        context?.startActivity(intent)
     }
 }
 
