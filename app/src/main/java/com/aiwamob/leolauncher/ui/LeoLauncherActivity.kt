@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.pm.ResolveInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aiwamob.leolauncher.databinding.ActivityLeoLauncherBinding
 
-private const val TAG = "NeoLauncherApp"
+//private const val TAG = "NeoLauncherApp"
 
 class LeoLauncherActivity : AppCompatActivity() {
 
@@ -39,7 +38,7 @@ class LeoLauncherActivity : AppCompatActivity() {
             )
         })
         binding.appRecyclerView.adapter = LeoActivityAdapter(activities)
-        Log.i(TAG, "Found ${activities.size} activities")
+        //Log.i(TAG, "Found ${activities.size} activities")
     }
 }
 
